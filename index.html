@@ -1,7 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
 <title>Kyro World</title>
 
 <style>
@@ -11,72 +10,29 @@ height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
-background:#0b0b0b;
-font-family:Segoe UI,sans-serif;
-overflow:hidden;
+background:black;
 }
 
-/* Logo Text */
-.logo{
-font-size:60px;
+#logo{
+font-size:64px;
+color:#00ffff;
 font-weight:bold;
-color:#00f2ff;
-text-shadow:0 0 20px rgba(0,242,255,0.7);
-animation: heartbeat 6s infinite;
+animation: beat 2s infinite;
 }
 
-/* Animation */
-@keyframes heartbeat{
-/* calm */
-0%{
-transform:scale(1) rotate(0deg);
-opacity:1;
-}
-
-/* 1st beat */
-10%{
-transform:scale(1.15);
-}
-20%{
-transform:scale(1);
-}
-
-/* 2nd beat */
-30%{
-transform:scale(1.2);
-}
-40%{
-transform:scale(1);
-}
-
-/* 3rd beat (strong) */
-50%{
-transform:scale(1.25);
-}
-
-/* rotate moment */
-60%{
-transform:scale(1) rotate(360deg);
-}
-
-/* calm slow */
-75%{
-transform:scale(0.95);
-opacity:0.85;
-}
-
-/* ready for next beat */
-100%{
-transform:scale(1) rotate(360deg);
-opacity:1;
-}
+@keyframes beat{
+0%{ transform:scale(1); }
+25%{ transform:scale(1.2); }
+50%{ transform:scale(1); }
+75%{ transform:scale(1.2); }
+100%{ transform:scale(1); }
 }
 </style>
 </head>
 
 <body>
 
-<div class="logo">Kyro World</div>
+<div id="logo">Kyro World</div>
 
 </body>
 </html>
