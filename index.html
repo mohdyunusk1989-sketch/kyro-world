@@ -212,7 +212,7 @@ let reply=aiReply(msg);
 addMsg("Kyro AI",reply,"bot");
 },600);
 }
-
+  
 function addMsg(name,text,cls){
 let box=document.getElementById("messages");
 let div=document.createElement("div");
@@ -220,17 +220,41 @@ div.className="msg "+cls;
 div.innerHTML="<b>"+name+":</b> "+text;
 box.appendChild(div);
 box.scrollTop=box.scrollHeight;
+  }
+
+  function aiReply(msg){
+msg = msg.toLowerCase();
+
+// Hinglish detect
+let hinglishWords = ["kya","kaise","kyu","kyon","hai","ho","tum","aap","mera","mujhe","bata","madad"];
+
+let isHinglish = hinglishWords.some(word => msg.includes(word));
+
+if(isHinglish){
+  if(msg.includes("hello") || msg.includes("hi"))
+    return "Hello! Main Kyro AI hoon 😄";
+  if(msg.includes("kaun") || msg.includes("who"))
+    return "Main Kyro AI hoon, future ke liye bana hoon.";
+  if(msg.includes("kyro"))
+    return "Kyro World ka matlab hai power, vision aur growth.";
+  if(msg.includes("help") || msg.includes("madad"))
+    return "Bolo, main kis cheez me madad karu?";
+  return "Samajh raha hoon 👍 thoda aur detail me likho.";
 }
 
-function aiReply(msg){
-msg=msg.toLowerCase();
+// English replies
+if(msg.includes("hello")||msg.includes("hi"))
+  return "Hello, I am Kyro AI.";
+if(msg.includes("who are you"))
+  return "I am Kyro AI, built for the future.";
+if(msg.includes("kyro"))
+  return "Kyro World is power, vision and growth.";
+if(msg.includes("help"))
+  return "Tell me what you want to build.";
 
-if(msg.includes("hello")||msg.includes("hi")) return "Hello, I am Kyro AI.";
-if(msg.includes("who are you")) return "I am Kyro AI, built for the future.";
-if(msg.includes("kyro")) return "Kyro World is power, vision and growth.";
-if(msg.includes("help")) return "Tell me what you want to build.";
 return "I am learning. Your words make me stronger.";
-}
+  }
+
 </script>
 
 </body>
