@@ -18,63 +18,67 @@ height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
-background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+background: linear-gradient(-45deg,#0f2027,#203a43,#2c5364,#1c1c1c);
+background-size:400% 400%;
+animation: gradientBG 12s ease infinite;
 overflow:hidden;
 }
 
-.container{
+@keyframes gradientBG{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+}
+
+.card{
+backdrop-filter: blur(20px);
+background: rgba(255,255,255,0.08);
+padding:50px;
+border-radius:20px;
 text-align:center;
+box-shadow:0 15px 40px rgba(0,0,0,0.5);
 color:white;
+width:90%;
+max-width:500px;
 }
 
 h1{
-font-size:60px;
-letter-spacing:4px;
+font-size:50px;
+letter-spacing:3px;
 text-transform:uppercase;
-color:#fff;
-text-shadow:
-0 0 10px #00f2ff,
-0 0 20px #00f2ff,
-0 0 40px #00f2ff;
-animation: float 3s ease-in-out infinite;
+margin-bottom:15px;
+text-shadow:0 0 15px #00f2ff;
 }
 
 p{
-margin-top:15px;
-font-size:18px;
-color:#ccc;
+color:#ddd;
+margin-bottom:25px;
 }
 
 button{
-margin-top:30px;
 padding:12px 30px;
-font-size:16px;
 border:none;
 border-radius:30px;
 background:#00f2ff;
 color:#000;
+font-weight:bold;
 cursor:pointer;
 transition:0.3s;
 }
 
 button:hover{
-background:#fff;
 transform:scale(1.1);
-}
-
-@keyframes float{
-0%,100%{ transform:translateY(0px);}
-50%{ transform:translateY(-20px);}
+background:white;
 }
 </style>
-
 </head>
+
 <body>
 
-<div class="container">
+<div class="card">
 <h1>Kyro World</h1>
-<p>AI Powered Digital Future</p>
-<button onclick="alert('Welcome to Kyro World 🚀')">Enter</button>
+<p>Welcome to the AI Powered Digital Future</p>
+<button onclick="alert('Entering Kyro World 🚀')">Enter</button>
 </div>
 
 </body>
