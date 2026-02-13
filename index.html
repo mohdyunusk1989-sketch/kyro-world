@@ -4,103 +4,150 @@
 <title>Kyro World</title>
 
 <style>
-body{
+*{
 margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, sans-serif;
+}
+
+body{
 height:100vh;
+background:black;
+overflow:hidden;
+display:flex;
+justify-content:center;
+align-items:center;
+color:white;
+}
+
+/* 🌌 STAR BACKGROUND */
+.stars{
+position:absolute;
+width:200%;
+height:200%;
+background:
+radial-gradient(1px 1px at 20px 30px, #fff, transparent),
+radial-gradient(1px 1px at 40px 70px, #fff, transparent),
+radial-gradient(1px 1px at 130px 80px, #fff, transparent),
+radial-gradient(1px 1px at 160px 120px, #fff, transparent);
+background-size:200px 200px;
+animation:moveStars 60s linear infinite;
+}
+
+@keyframes moveStars{
+from{transform:translate(0,0);}
+to{transform:translate(-500px,-500px);}
+}
+
+/* ⏳ LOADING SCREEN */
+#loader{
+position:absolute;
+width:100%;
+height:100%;
+background:black;
 display:flex;
 flex-direction:column;
 justify-content:center;
 align-items:center;
-background:linear-gradient(-45deg,#000000,#0f2027,#203a43,#000000);
-background-size:400% 400%;
-animation:bgMove 8s ease infinite;
+z-index:10;
+animation:hideLoader 3s forwards;
+}
+
+@keyframes hideLoader{
+to{opacity:0; visibility:hidden;}
+}
+
+#loading-text{
+letter-spacing:3px;
+margin-bottom:15px;
+color:#00ffff;
+}
+
+.bar{
+width:200px;
+height:5px;
+background:#111;
 overflow:hidden;
-font-family:Arial, sans-serif;
-color:white;
+border-radius:10px;
 }
 
-@keyframes bgMove{
-0%{background-position:0% 50%;}
-50%{background-position:100% 50%;}
-100%{background-position:0% 50%;}
-}
-
-/* Flash Effect */
-body::after{
+.bar::after{
 content:"";
-position:absolute;
-width:100%;
+display:block;
+width:0;
 height:100%;
-background:white;
-opacity:1;
-animation:flash 1s ease forwards;
+background:#00ffff;
+animation:loadBar 3s forwards;
 }
 
-@keyframes flash{
-0%{opacity:1;}
-100%{opacity:0;}
+@keyframes loadBar{
+to{width:100%;}
 }
 
-/* Main Logo */
-#logo{
+/* ⚡ MAIN LOGO */
+#logoBox{
 position:relative;
+padding:30px 70px;
+border-radius:25px;
+background:rgba(255,255,255,0.08);
+backdrop-filter:blur(15px);
+box-shadow:0 0 50px cyan;
+text-align:center;
+opacity:0;
+animation:logoEntry 1.5s ease forwards 3s;
+}
+
+@keyframes logoEntry{
+from{transform:scale(0.5); opacity:0;}
+to{transform:scale(1); opacity:1;}
+}
+
+#logo{
 font-size:60px;
 font-weight:bold;
 letter-spacing:4px;
-padding:20px 60px;
-border-radius:20px;
-background:rgba(255,255,255,0.05);
-backdrop-filter:blur(15px);
-box-shadow:0 0 40px cyan;
-animation:zoomIn 1.5s ease, glitch 3s infinite 2s;
-overflow:hidden;
+animation:heartbeat 3s infinite;
 }
 
-/* Zoom Entry */
-@keyframes zoomIn{
-0%{transform:scale(0.5) rotate(-20deg); opacity:0;}
-100%{transform:scale(1) rotate(0deg); opacity:1;}
+/* ❤️ HEARTBEAT */
+@keyframes heartbeat{
+0%{transform:scale(1);}
+25%{transform:scale(1.08);}
+50%{transform:scale(1);}
+75%{transform:scale(1.1);}
+100%{transform:scale(1);}
 }
 
-/* Glitch Effect */
-@keyframes glitch{
-0%{text-shadow:2px 2px red;}
-25%{text-shadow:-2px -2px cyan;}
-50%{text-shadow:2px -2px lime;}
-75%{text-shadow:-2px 2px magenta;}
-100%{text-shadow:2px 2px red;}
-}
-
-/* Shine Line */
-#logo::before{
+/* ✨ SHINE */
+#logoBox::before{
 content:"";
 position:absolute;
 top:0;
 left:-100%;
 width:100%;
 height:100%;
-background:linear-gradient(120deg, transparent, rgba(255,255,255,0.5), transparent);
+background:linear-gradient(120deg,transparent,rgba(255,255,255,0.6),transparent);
 animation:shine 3s infinite;
 }
 
 @keyframes shine{
-0%{left:-100%;}
-100%{left:100%;}
+to{left:100%;}
 }
 
-/* Tagline */
+/* TAGLINE */
 #tagline{
-margin-top:20px;
-font-size:20px;
+margin-top:15px;
+font-size:18px;
 letter-spacing:3px;
+color:#00ffff;
 opacity:0;
-animation:fadeUp 2s ease forwards 1.5s;
-text-shadow:0 0 15px cyan;
+animation:fadeUp 1.5s ease forwards 4s;
 }
 
 @keyframes fadeUp{
-0%{opacity:0; transform:translateY(20px);}
-100%{opacity:1; transform:translateY(0);}
+from{opacity:0; transform:translateY(20px);}
+to{opacity:1; transform:translateY(0);}
 }
 
 </style>
@@ -108,8 +155,19 @@ text-shadow:0 0 15px cyan;
 
 <body>
 
+<div class="stars"></div>
+
+<!-- LOADER -->
+<div id="loader">
+<div id="loading-text">LOADING KYRO WORLD</div>
+<div class="bar"></div>
+</div>
+
+<!-- LOGO -->
+<div id="logoBox">
 <div id="logo">KYRO WORLD</div>
 <div id="tagline">Built Different • Rule Your World</div>
+</div>
 
 </body>
 </html>
