@@ -222,38 +222,53 @@ box.appendChild(div);
 box.scrollTop=box.scrollHeight;
   }
 
-  function aiReply(msg){
-msg = msg.toLowerCase();
+function aiReply(msg){
+msg = msg.toLowerCase().trim();
 
-// Hinglish detect
-let hinglishWords = ["kya","kaise","kyu","kyon","hai","ho","tum","aap","mera","mujhe","bata","madad"];
+// Hinglish detect words
+let hinglishWords = ["kya","kaise","kyu","kyon","hai","ho","tum","aap","mera","mujhe","bata","madad","acha","theek"];
 
 let isHinglish = hinglishWords.some(word => msg.includes(word));
 
+/* HINGLISH MODE */
 if(isHinglish){
+
   if(msg.includes("hello") || msg.includes("hi"))
     return "Hello! Main Kyro AI hoon 😄";
-  if(msg.includes("kaun") || msg.includes("who"))
-    return "Main Kyro AI hoon, future ke liye bana hoon.";
+
+  if(msg.includes("kaise ho"))
+    return "Main badhiya hoon 😎 Tum kaise ho?";
+
+  if(msg.includes("kaun"))
+    return "Main Kyro AI hoon, future ke liye bana hoon 🔥";
+
   if(msg.includes("kyro"))
-    return "Kyro World ka matlab hai power, vision aur growth.";
+    return "Kyro World ka matlab hai power, vision aur growth 🚀";
+
   if(msg.includes("help") || msg.includes("madad"))
     return "Bolo, main kis cheez me madad karu?";
+
   return "Samajh raha hoon 👍 thoda aur detail me likho.";
 }
 
-// English replies
+/* ENGLISH MODE */
 if(msg.includes("hello")||msg.includes("hi"))
   return "Hello, I am Kyro AI.";
+
+if(msg.includes("how are you"))
+  return "I am doing great 😎 How are you?";
+
 if(msg.includes("who are you"))
   return "I am Kyro AI, built for the future.";
+
 if(msg.includes("kyro"))
   return "Kyro World is power, vision and growth.";
+
 if(msg.includes("help"))
   return "Tell me what you want to build.";
 
 return "I am learning. Your words make me stronger.";
-  }
+}
 
 </script>
 
